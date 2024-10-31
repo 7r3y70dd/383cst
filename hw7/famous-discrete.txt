@@ -1,0 +1,27 @@
+
+# Instructions: edit this file to provide your homework answers.
+# Problem numbers are shown on lines that begin with #@.
+#
+# Please put your solution to a problem after the line that gives
+# the number of that problem.  Each problem explains how your answer
+# should be given.  Do not modify this file *except* to add lines
+# as needed after each problem.  Blank lines are ignored.
+
+#@ 1 -- enter a number between 0 and 1, inclusive, as a decimal number or a fraction.
+0.346
+
+#@ 2 -- enter a number; do not provide units
+-0.4
+
+#@ 3 -- enter a number
+2.5
+
+#@ 4 -- enter a number
+2
+
+#@ 5 -- enter a number
+0.794
+
+
+
+

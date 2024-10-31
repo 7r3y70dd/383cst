@@ -1,0 +1,21 @@
+
+# 
+# Problem lines begin with "#@".
+# For each problem line, enter your answer on the following line.
+# Do not modify this file in any way except to enter your answers.
+#
+
+#@ 1 -- enter 'a' or 'b'  (don't use quotes in your answers)
+a
+#@ 2 -- enter 'a', 'b', or 'c'
+c
+#@ 3 -- enter 'a', 'b', or 'c'
+a
+#@ 4 -- enter 'a', 'b', or 'c'
+a
+#@ 5 -- enter a decimal number (use 3 significant digits)
+0.2
+#@ 6 -- enter a decimal number (use 3 significant digits)
+0
+#@ 7 -- enter 'a', 'b', or 'c'
+a

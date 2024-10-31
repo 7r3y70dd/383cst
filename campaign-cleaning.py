@@ -55,13 +55,17 @@ df.info()
 ## What is the total number of NAs in df?
 ## (compute a number)
 #@ assume df
+total = df.isna().sum().sum()
+print(total)
+print('')
 
 
 #@ problem 2
 ## What fraction of all values in df are NA values?
 ## (compute a number between 0 and 1)
 #@ assume df
-
+print(total/df.size)
+print('')
 
 #@ problem 3
 ## What fraction of the values in each column are NA?
@@ -69,13 +73,23 @@ df.info()
 ## decreasing value.
 ## (compute a Pandas Series)
 #@ assume df
-
+total_per_column = df.isna().sum()
+totals = total_per_column / df.shape[0]
+totals_sorted = totals.sort_values(ascending=False)
+print(totals_sorted[totals_sorted > 0])
+print('')
+# for i in totals_sorted.index:
+#     if totals_sorted[i] > 0:
+#         print(f"{i}: {totals_sorted[i]:.5f}")
 
 #@ problem 4
 ## Which columns contain more than 40% NA values?
 ## (compute a NumPy array of the column names, sorted alphabetically)
 #@ assume df
-
+over_40 = totals[totals > 0.4].index
+sorted = np.sort(over_40)
+print(sorted)
+print('')
 
 #@ problem 5
 ## Compute a series that show the cumulative fraction of
@@ -92,14 +106,19 @@ df.info()
 ## Hint: there is a "cumsum" function for series in Pandas.
 ## (compute a NumPy series)
 #@ assume df
-
+total_n_sorted = total_per_column.sort_values(ascending=False)
+cdf = total_n_sorted.cumsum() / total_n_sorted.sum()
+print(cdf)
+print('')
 
 #@ problem 6
 ## What fraction of the rows in df contain at least 2 NA values?
 ## (compute a single number between 0 and 1)
 #@ assume df
-
-
+tot_na = df.isna().sum(axis=1)
+two_or_more = (tot_na >= 2).sum()
+print(two_or_more / df.shape[0])
+print('')
 #@ problem 7
 ## There are other values in the dataset, besides NA, that
 ## represent missing data.  How to find them?
@@ -110,7 +129,6 @@ df.info()
 ## (compute a single number)
 #@ assume df
 
-
 #@ problem 8
 ## Would you expect contbr_employer to contain data that
 ## represent missing values?  Create a series with counts
@@ -120,8 +138,10 @@ df.info()
 ## of the values represent missing values?
 ## (compute a Series)
 #@ assume df
-
-
+val_counts = df['contbr_employer'].value_counts().head(15)
+print('')
+print(val_counts)
+print('')
 #@ problem 9
 ## Repeat the previous problem, but this time create a data
 ## frame showing the 15 most-occurring values for columns
@@ -133,7 +153,26 @@ df.info()
 ## 0 to 14.  Then use pandas.DataFrame.apply() with this function.
 ## (compute a DataFrame)
 #@ assume df
+def top_15_values(s, k=None):
+    if k is None:
+        final = pd.Series(s.value_counts().head(15).index, index=range(15))
 
+        return final
+    else:
+        final = pd.DataFrame({s.name : s.value_counts().head(15).index, k.name: k.value_counts().head(15).index})
+
+        final.index = range(15)
+
+        return final
+
+val_counts_1_5 = df['contbr_employer']
+print(top_15_values(val_counts_1_5))
+print('')
+val_counts_2 = df['contbr_occupation']
+val_counts_3 = df['contbr_city']
+print('')
+print(top_15_values(val_counts_2, val_counts_3))
+print('')
 
 #@ problem 10
 ## Look carefully at the output of the last problem.  (Do this
@@ -148,7 +187,7 @@ df.info()
 ## (write a pd.DataFrame.replace() statement)
 #@ assume df
 #@ assign df
-
+df.replace(['INFORMATION REQUESTED', 'INFORMATION REQUESTED PER BEST EFFORTS'], np.nan, inplace=True)
 
 #@ problem 11
 ## Did you notice that 'NOT EMPLOYED' and 'NONE'
@@ -160,7 +199,7 @@ df.info()
 ## (write a pd.Series.replace() statement)
 #@ assume df
 #@ assign df
-
+df.replace({'contbr_employer': {'NONE', 'NOT EMPLOYED'}}, inplace=True)
 
 #@ problem 12
 ## Lots of people are self-employed.  Compute a NumPy array of
@@ -168,7 +207,10 @@ df.info()
 ## You may want to use pd.Series.str.contains().  Check out the 'na' option.
 ## (compute a NumPy array)
 #@ assume df
+self_employed = df['contbr_occupation'][df['contbr_occupation'].str.contains('SELF', na=False)].unique()
 
+print(self_employed)
+print('')
 
 #@ problem 13
 ## Update df to remove all columns containing at least 50% NA values.
@@ -176,7 +218,7 @@ df.info()
 ## (write a pd.DataFrame.dropna() statement)
 #@ assume df
 #@ assign df
-
+df.dropna(axis=1, thresh=df.shape[0] * 0.5, inplace=True)
 
 #@ problem 14
 ## Column election_tp has a very small number of NA values.
@@ -184,7 +226,7 @@ df.info()
 ## (write a pd.DataFrame.dropna() statement)
 #@ assume df
 #@ assign df
-
+df.dropna(subset=['election_tp'], inplace=True)
 
 #@ problem 15
 ## What about bad zip values?  
@@ -193,13 +235,17 @@ df.info()
 ## a digit is '[^0-9]'  Consider using Series.str.contains() for this.
 ## (compute a number)
 #@ assume df
-
+bad_zip = df['contbr_zip'].str.contains('[^0-9]').sum()
+print(bad_zip)
+print('')
 
 #@ problem 16
 ## What fraction of contb_receipt_amt values are less than 0?
 ## (compute a number between 0 and 1)
 #@ assume df
-
+frac = (df['contb_receipt_amt'] < 0).mean()
+print(frac)
+print('')
 
 
 

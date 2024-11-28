@@ -1,0 +1,28 @@
+
+#
+# Please edit this file by inserting your answer on the line after
+# each problem.
+#
+# DO NOT edit the file in any other way!
+#
+
+# Reading
+
+#@ 1 -- enter 'a', 'b', or 'c'   (don't use quotes in any of your answers)
+
+#@ 2 -- enter an integer  
+
+#@ 3 -- enter 'a' or 'b'
+
+#@ 4 -- enter 'T' or 'F'
+
+#@ 5 -- enter 'T' or 'F'
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+
+# Instructions: edit this file to provide your homework answers.
+#
+# Problem numbers are shown on lines that begin with #@.
+# Please put your solution to a problem on the line *after* the
+# line with the problem number.
+#
+# Do not modify this file *except* to add lines as needed after each problem.
+# Blank lines are ignored.
+#
+# No points will be awarded to incorrectly-formatted files.
+#
+
+# Reading
+
+#@ 1 -- enter 'Y' or 'N'   (don't use quotes in any of your answers)
+
+#@ 2 -- enter 'T' or 'F'
+
+#@ 3 -- enter 'a', 'b', or 'c'
+
+#@ 4 -- enter 'a' or 'b'
+
+#@ 5 -- enter 'Y' or 'N'
+
+#@ 6 -- enter a decimal number   (three significant digits is fine)
+
+#@ 7 -- enter a decimal number   (three significant digits is fine)
+
+#@ 8 -- enter a decimal number   (three significant digits is fine)
+
+
+
+
+
+
+
+
+
+

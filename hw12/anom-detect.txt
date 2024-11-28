@@ -7,15 +7,15 @@
 #
 
 #@ 1 -- enter 'a', 'b', or 'c'   (don't use quotes in any of your answers)
-
+b
 #@ 2 -- enter 'a', 'b', or 'c'
-
+a
 #@ 3 -- enter 'a', 'b', or 'c'  
-
+a
 #@ 4 -- enter 'T' or 'F'
-
+T
 #@ 5 -- enter 'T' or 'F'
-
+T
 
 
 
